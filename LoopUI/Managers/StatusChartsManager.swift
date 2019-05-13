@@ -17,6 +17,16 @@ import os.log
 public final class StatusChartsManager {
     private let log = OSLog(category: "StatusChartsManager")
 
+    private lazy var timeFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        let dateFormat = DateFormatter.dateFormat(fromTemplate: "j", options: 0, locale: Locale.current)!
+        let isAmPmTimeFormat = dateFormat.index( of: "a") != nil
+        formatter.dateFormat = isAmPmTimeFormat
+                ? "h a"
+                : "H:mm"
+        return formatter
+    }()
+
     public init(colors: ChartColorPalette, settings: ChartSettings) {
         self.colors = colors
         self.chartSettings = settings
@@ -163,6 +173,7 @@ public final class StatusChartsManager {
     }
 
     // MARK: - State
+
 
     public var glucosePoints: [ChartPoint] = [] {
         didSet {
@@ -907,8 +918,6 @@ public final class StatusChartsManager {
     // MARK: - Shared Axis
 
     private func generateXAxisValues() {
-        let timeFormatter = DateFormatter()
-        timeFormatter.dateFormat = "h a"
 
         let points = [
             ChartPoint(
