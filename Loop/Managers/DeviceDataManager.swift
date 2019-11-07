@@ -19,7 +19,7 @@ final class DeviceDataManager {
     private let queue = DispatchQueue(label: "com.loopkit.DeviceManagerQueue", qos: .utility)
 
     private let log = DiagnosticLogger.shared.forCategory("DeviceManager")
-    
+
     private var lastGlucose:NewGlucoseSample?
 
     /// Remember the launch date of the app for diagnostic reporting
@@ -566,21 +566,21 @@ extension DeviceDataManager: PumpManagerDelegate {
         dispatchPrecondition(condition: .onQueue(queue))
         return loopManager.doseStore.pumpEventQueryAfterDate
     }
-    
+
     @objc func onIdleSpikeUpdate() {
         log.default("PumpManager:\(type(of: pumpManager)) idle spike update")
-        
+
         lastBLEDrivenUpdate = Date()
-        
+
         self.cgmManager?.fetchNewDataIfNeeded { (result) in
-            
+
             if case .newData(let glucoseList) = result {
                 AnalyticsManager.shared.didFetchNewCGMData()
                 self.lastGlucose = glucoseList.first
             } else if (self.lastGlucose == nil) {
                 self.lastGlucose = self.cgmManager?.sensorState as? NewGlucoseSample
             }
-            
+
             if let manager = self.cgmManager {
                 self.queue.async {
                     self.cgmManager(manager, didUpdateWith: result)
@@ -590,10 +590,10 @@ extension DeviceDataManager: PumpManagerDelegate {
                 }
             }
         }
-        
-        
+
+
     }
-    
+
     func setNextTimer() {
         dispatchPrecondition(condition: .onQueue(queue))
         var intervalToNextUpdate = TimeInterval(minutes: 1.0)
