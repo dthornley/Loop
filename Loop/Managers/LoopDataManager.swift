@@ -747,7 +747,7 @@ extension LoopDataManager {
             doseStore.getGlucoseEffects(start: nextEffectDate, basalDosingEnd: nil) { (result) -> Void in
                 switch result {
                 case .failure(let error):
-                    self.logger.error("%{public}@", String(describing: error))
+                    self.logger.error(error)
                     self.insulinEffectIncludingPendingInsulin = nil
                 case .success(let effects):
                     self.insulinEffectIncludingPendingInsulin = effects
@@ -984,7 +984,7 @@ extension LoopDataManager {
     }
 
     /// - Throws: LoopError.missingDataError
-    fileprivate func recommendBolus<Sample: GlucoseValue>(forPrediction predictedGlucose: [Sample]) throws -> BolusRecommendation? {
+    fileprivate func recommendBolus<Sample: GlucoseValue>(forPrediction predictedGlucose: [Sample]) throws -> ManualBolusRecommendation? {
         guard let glucose = glucoseStore.latestGlucose else {
             throw LoopError.missingDataError(.glucose)
         }
@@ -1036,7 +1036,7 @@ extension LoopDataManager {
             return self.delegate?.loopDataManager(self, roundBolusVolume: units) ?? units
         }
 
-        return predictedGlucose.recommendedBolus(
+        return predictedGlucose.recommendedManualBolus(
             to: glucoseTargetRange,
             suspendThreshold: settings.suspendThreshold?.quantity,
             sensitivity: insulinSensitivity,
@@ -1336,7 +1336,7 @@ protocol LoopState {
     /// - Parameter predictedGlucose: A timeline of predicted glucose values
     /// - Returns: A bolus recommendation, or `nil` if not applicable
     /// - Throws: LoopError.missingDataError if recommendation cannot be computed
-    func recommendBolus<Sample: GlucoseValue>(forPrediction predictedGlucose: [Sample]) throws -> BolusRecommendation?
+    func recommendBolus<Sample: GlucoseValue>(forPrediction predictedGlucose: [Sample]) throws -> ManualBolusRecommendation?
 
     /// Computes the carbs on board, taking into account an unstored carb entry
     /// - Parameters:
@@ -1425,7 +1425,7 @@ extension LoopDataManager {
             return try loopDataManager.predictGlucose(using: inputs, potentialBolus: potentialBolus, potentialCarbEntry: potentialCarbEntry, replacingCarbEntry: replacedCarbEntry, includingPendingInsulin: includingPendingInsulin)
         }
 
-        func recommendBolus<Sample: GlucoseValue>(forPrediction predictedGlucose: [Sample]) throws -> BolusRecommendation? {
+        func recommendBolus<Sample: GlucoseValue>(forPrediction predictedGlucose: [Sample]) throws -> ManualBolusRecommendation? {
             return try loopDataManager.recommendBolus(forPrediction: predictedGlucose)
         }
 
