@@ -43,6 +43,7 @@
 		<string>dexcomcgm</string>
 		<string>dexcomshare</string>
 		<string>spikeapp</string>
+		<string>diabox</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
