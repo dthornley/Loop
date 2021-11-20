@@ -13,6 +13,7 @@ import MockKit
 import SpikeClient
 import BubbleClient
 import NightscoutAPIClient
+import xDripClient
 
 let allCGMManagers: [CGMManager.Type] = [
     G6CGMManager.self,
@@ -20,6 +21,7 @@ let allCGMManagers: [CGMManager.Type] = [
     G4CGMManager.self,
     ShareClientManager.self,
     MockCGMManager.self,
+    xDripClientManager.self,
     BubbleClientManager.self,
     NightscoutAPIManager.self,
     SpikeClientManager.self,
