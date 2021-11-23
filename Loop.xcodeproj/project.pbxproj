@@ -22,6 +22,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		2CBB4B0D2582B6820099DDEF /* xDripClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CBB4B0C2582B6820099DDEF /* xDripClient.framework */; };
+		2CBB4B0F2582B6A00099DDEF /* xDripClientUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CBB4B0E2582B6A00099DDEF /* xDripClientUI.framework */; };
 		2E3484B7230607D700B11C92 /* SpikeClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E3484B5230607D700B11C92 /* SpikeClient.framework */; };
 		2E3484B8230607D700B11C92 /* SpikeClientUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E3484B6230607D700B11C92 /* SpikeClientUI.framework */; };
 		43027F0F1DFE0EC900C51989 /* HKUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F526D5E1DF2459000A04910 /* HKUnit.swift */; };
@@ -578,6 +580,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2CBB4B0C2582B6820099DDEF /* xDripClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = xDripClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2CBB4B0E2582B6A00099DDEF /* xDripClientUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = xDripClientUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E3484B5230607D700B11C92 /* SpikeClient.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpikeClient.framework; path = Carthage/Build/iOS/SpikeClient.framework; sourceTree = "<group>"; };
 		2E3484B6230607D700B11C92 /* SpikeClientUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpikeClientUI.framework; path = Carthage/Build/iOS/SpikeClientUI.framework; sourceTree = "<group>"; };
 		4302F4E01D4E9C8900F0FCAF /* TextFieldTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldTableViewController.swift; sourceTree = "<group>"; };
@@ -1133,6 +1137,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CBB4B0F2582B6A00099DDEF /* xDripClientUI.framework in Frameworks */,
+				2CBB4B0D2582B6820099DDEF /* xDripClient.framework in Frameworks */,
 				441EEB2A259806D800C2AB74 /* BubbleClient.framework in Frameworks */,
 				441EEB2C259806DC00C2AB74 /* BubbleClientUI.framework in Frameworks */,
 				441EEA942598016300C2AB74 /* NightscoutAPIClient.framework in Frameworks */,
@@ -1873,6 +1879,8 @@
 		968DCD53F724DE56FFE51920 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2CBB4B0E2582B6A00099DDEF /* xDripClientUI.framework */,
+				2CBB4B0C2582B6820099DDEF /* xDripClient.framework */,
 				441EEB2B259806DC00C2AB74 /* BubbleClientUI.framework */,
 				441EEB29259806D800C2AB74 /* BubbleClient.framework */,
 				441EEA972598018700C2AB74 /* NightscoutAPIClient.framework */,
@@ -2174,6 +2182,7 @@
 					43776F8B1B8022E90074EA36 = {
 						CreatedOnToolsVersion = 7.0;
 						LastSwiftMigration = 1020;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -2511,6 +2520,8 @@
 				"$(BUILT_PRODUCTS_DIR)/SpikeClientUI.framework/SpikeClientUI",
 				"$(BUILT_PRODUCTS_DIR)/BubbleClient.framework/BubbleClient",
 				"$(BUILT_PRODUCTS_DIR)/BubbleClientUI.framework/BubbleClientUI",
+				"$(BUILT_PRODUCTS_DIR)/xDripClient.framework/xDripClient",
+				"$(BUILT_PRODUCTS_DIR)/xDripClientUI.framework/xDripClientUI",
 				"$(BUILT_PRODUCTS_DIR)/NightscoutAPIClient.framework/NightscoutAPIClient",
 				"$(BUILT_PRODUCTS_DIR)/NightscoutAPIClientUI.framework/NightscoutAPIClientUI",
 			);
@@ -2535,6 +2546,8 @@
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SpikeClientUI.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/BubbleClient.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/BubbleClientUI.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/xDripClient.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/xDripClientUI.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/NightscoutAPIClient.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/NightscoutAPIClientUI.framework",
 			);
@@ -3590,7 +3603,8 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "$(APPICON_NAME)";
 				CODE_SIGN_ENTITLEMENTS = Loop/Loop.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EBV6EGPQJ9;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = Loop/Info.plist;
@@ -3600,6 +3614,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "$(MAIN_APP_BUNDLE_IDENTIFIER)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -3609,7 +3624,8 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "$(APPICON_NAME)";
 				CODE_SIGN_ENTITLEMENTS = Loop/Loop.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EBV6EGPQJ9;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = Loop/Info.plist;
@@ -3617,6 +3633,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "$(MAIN_APP_BUNDLE_IDENTIFIER)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};

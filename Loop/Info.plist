@@ -44,6 +44,7 @@
 		<string>dexcomshare</string>
 		<string>spikeapp</string>
 		<string>diabox</string>
+		<string>xdrip</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
